@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 def transform_data():
     os.makedirs('data/processed', exist_ok=True)
+    os.makedirs('data/outputs', exist_ok=True)
     
     # Load the CSV files
     base_df = pd.read_csv('data/extracted/Base.csv')
@@ -22,14 +23,18 @@ def transform_data():
     df.dropna(inplace=True)
     df.drop_duplicates(inplace=True)
     
+    # One-hot encode categorical variables
+    categorical_features = ['employment_status', 'payment_type', 'housing_status', 'source', 'device_os']  # Add other categorical columns if necessary
+    df = pd.get_dummies(df, columns=categorical_features, drop_first=True)
+    
     # EDA: Visualize the distribution of the fraud labels
     plt.figure(figsize=(10, 6))
-    sns.countplot(x='fraud_bool', data=df)  # Update 'fraud_label' to 'fraud_bool'
+    sns.countplot(x='fraud_bool', data=df)
     plt.title('Fraud Label Distribution')
     plt.savefig('data/outputs/fraud_label_distribution.png')
     plt.show()
 
-    # Save the cleaned data
+    # Save the cleaned and processed data
     df.to_csv('data/processed/bank_account_fraud_clean.csv', index=False)
     print("Data transformation complete. Clean data saved to 'data/processed/bank_account_fraud_clean.csv'")
 
