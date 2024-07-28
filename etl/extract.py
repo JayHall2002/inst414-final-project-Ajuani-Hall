@@ -1,6 +1,5 @@
 # etl/extract.py
 import os
-import zipfile
 from kaggle.api.kaggle_api_extended import KaggleApi
 
 def extract_data():
