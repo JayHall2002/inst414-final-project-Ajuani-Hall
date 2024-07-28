@@ -7,8 +7,16 @@ import matplotlib.pyplot as plt
 def transform_data():
     os.makedirs('data/processed', exist_ok=True)
     
-    # Load the CSV file
-    df = pd.read_csv('data/extracted/fraudTest.csv')
+    # Load the CSV files
+    base_df = pd.read_csv('data/extracted/Base.csv')
+    variant_i_df = pd.read_csv('data/extracted/Variant I.csv')
+    variant_ii_df = pd.read_csv('data/extracted/Variant II.csv')
+    variant_iii_df = pd.read_csv('data/extracted/Variant III.csv')
+    variant_iv_df = pd.read_csv('data/extracted/Variant IV.csv')
+    variant_v_df = pd.read_csv('data/extracted/Variant V.csv')
+    
+    # Combine the dataframes if necessary
+    df = pd.concat([base_df, variant_i_df, variant_ii_df, variant_iii_df, variant_iv_df, variant_v_df])
     
     # Data cleaning steps
     df.dropna(inplace=True)
