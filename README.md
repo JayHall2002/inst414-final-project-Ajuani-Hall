@@ -1,41 +1,54 @@
-# inst414-final-project-Ajuani-Hall
-Part 2 of the Final Project for INST 414
-Project Overview
+# Project Overview
 
-In the banking and finance sector, fraud detection and prevention is a critical business problem due to substantial risks of financial losses, reputational damage, and erosion of customer trust. This project aims to develop an advanced fraud detection system using machine learning techniques to accurately identify and prevent fraudulent transactions in real-time, thereby safeguarding the institution's assets and maintaining customer trust.
+This project aims to detect bank account fraud using machine learning techniques. The dataset used is the "Bank Account Fraud Dataset" from Kaggle, which includes various features related to bank transactions and user details. The goal is to build a model that can accurately classify transactions as fraudulent or non-fraudulent.
 
+## Setup Instructions
 
-Business Problem:
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/YOUR_GITHUB_USERNAME/inst414-final-project-ajuani-hall.git
+    cd inst414-final-project-ajuani-hall
+    ```
 
-Develop an advanced fraud detection system to accurately identify and prevent fraudulent transactions in real-time.
+2. **Create and activate a virtual environment**:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On macOS/Linux
+    # or
+    .\venv\Scripts\activate  # On Windows
+    ```
 
-Dataset : https://www.kaggle.com/datasets/sgpjesus/bank-account-fraud-dataset-neurips-2022
+3. **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Techniques Employed:
+4. **Ensure Kaggle API credentials are set up**:
+    - Place the `kaggle.json` file in the `~/.kaggle` directory.
 
-Data preprocessing
-Machine learning (Logistic Regression, Decision Trees, Random Forests, Neural Networks)
-Exploratory data analysis (EDA)
-Data visualization
+## Running the Project
 
-Expected Outputs:
+1. **Run the main script**:
+    ```bash
+    python main.py
+    ```
 
-A robust fraud detection model
-Visualizations highlighting key insights and model performance
+## Code Package Structure
 
-Prerequisites
-Python 3.x
-Git
-
-
-Project Workflow
-The project workflow includes the following steps:
-
-ETL Pipeline:
-Extract: Retrieve data from the specified source.
-Transform: Clean and preprocess the data.
-Load: Store the processed data for analysis.
-Analysis and Evaluation:
-Build and evaluate machine learning models.
-Visualization:
-Generate visualizations to present key findings and model performance.
+- `data/`: Data files
+    - `extracted/`: Extracted raw data files
+    - `processed/`: Cleaned and processed data files
+    - `outputs/`: Output files such as visualizations
+    - `reference-tables/`: Reference tables used in the project
+- `etl/`: ETL pipeline scripts
+    - `extract.py`: Script to extract data
+    - `transform.py`: Script to transform data
+    - `load.py`: Script to load data
+- `analysis/`: Analysis scripts
+    - `model.py`: Script to build and train the model
+    - `evaluate.py`: Script to evaluate the model
+- `vis/`: Visualization scripts
+    - `visualizations.py`: Script to create visualizations
+- `main.py`: Main script to run the project
+- `README.md`: Project documentation
+- `requirements.txt`: List of dependencies
