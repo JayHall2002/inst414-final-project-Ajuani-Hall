@@ -5,6 +5,18 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def transform_data():
+    """
+    Transform the extracted data by cleaning, processing, and visualizing it.
+
+    This function performs the following steps:
+    - Load the CSV files.
+    - Combine the dataframes.
+    - Clean the data by removing missing values and duplicates.
+    - One-hot encode categorical variables.
+    - Visualize the distribution of the fraud labels.
+    - Save the cleaned and processed data.
+    """
+    # Ensure the necessary directories exist
     os.makedirs('data/processed', exist_ok=True)
     os.makedirs('data/outputs', exist_ok=True)
     
@@ -16,7 +28,7 @@ def transform_data():
     variant_iv_df = pd.read_csv('data/extracted/Variant IV.csv')
     variant_v_df = pd.read_csv('data/extracted/Variant V.csv')
     
-    # Combine the dataframes if necessary
+    # Combine the dataframes
     df = pd.concat([base_df, variant_i_df, variant_ii_df, variant_iii_df, variant_iv_df, variant_v_df])
     
     # Data cleaning steps
@@ -24,7 +36,7 @@ def transform_data():
     df.drop_duplicates(inplace=True)
     
     # One-hot encode categorical variables
-    categorical_features = ['employment_status', 'payment_type', 'housing_status', 'source', 'device_os']  # Add other categorical columns if necessary
+    categorical_features = ['employment_status', 'payment_type', 'housing_status', 'source', 'device_os']
     df = pd.get_dummies(df, columns=categorical_features, drop_first=True)
     
     # EDA: Visualize the distribution of the fraud labels
