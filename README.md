@@ -52,3 +52,9 @@ This project aims to detect bank account fraud using machine learning techniques
 - `main.py`: Main script to run the project
 - `README.md`: Project documentation
 - `requirements.txt`: List of dependencies
+
+## Updates for Part 3
+- Enhanced logging and error handling in `main.py` and other modules.
+- Improved ETL processes to include new data sources and better transformations.
+- Updated model evaluation to include detailed metrics and logging.
+- Added more comprehensive docstrings and comments across all modules.
