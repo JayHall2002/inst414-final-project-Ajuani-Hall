@@ -1,37 +1,36 @@
-# evaluate.py
+
 import pandas as pd
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import classification_report
-# evaluate.py
-from .model import build_model
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
-def evaluate_model(model, X_test, y_test):
-    y_pred = model.predict(X_test)
+def build_model():
+    """
+    Build and train a RandomForest model on the cleaned dataset.
 
-    accuracy = accuracy_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred)
-    recall = recall_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred)
-    cm = confusion_matrix(y_test, y_pred)
+    This function performs the following steps:
+    - Load the processed data.
+    - Split the data into training and testing sets.
+    - Train a RandomForest classifier on the training data.
+    - Return the trained model and the testing data.
+    """
+    # Load the processed data
+    df = pd.read_csv('data/processed/bank_account_fraud_clean.csv')
+    X = df.drop('fraud_bool', axis=1)
+    y = df['fraud_bool']
+    
+    # Ensure all features are numeric
+    X = pd.get_dummies(X)
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Train the RandomForest model with optimized parameters
+    model = RandomForestClassifier(n_estimators=50, max_depth=10, n_jobs=-1, random_state=42)
+    model.fit(X_train, y_train)
+    
+    print("Model training complete.")
+    return model, X_test, y_test
 
-    # Store evaluation metrics
-    metrics = {
-        'Accuracy': accuracy,
-        'Precision': precision,
-        'Recall': recall,
-        'F1 Score': f1
-    }
+if __name__ == "__main__":
+    build_model()
 
-    metrics_df = pd.DataFrame([metrics])
-    metrics_df.to_csv('data/evaluation/metrics.csv', index=False)
-
-    # Plot confusion matrix
-    plt.figure(figsize=(10,7))
-    sns.heatmap(cm, annot=True, fmt='d')
-    plt.title('Confusion Matrix')
-    plt.ylabel('Actual Values')
-    plt.xlabel('Predicted Values')
-    plt.savefig('data/evaluation/confusion_matrix.png')
-    plt.close()
