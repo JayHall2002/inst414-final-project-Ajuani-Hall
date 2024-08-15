@@ -7,11 +7,13 @@ import etl.load as load
 import analysis.model as model
 import analysis.evaluate as evaluate
 import vis.visualizations as vis
+import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
+
     """
     Main function to run the ETL pipeline, model training, evaluation, and visualization.
     """
