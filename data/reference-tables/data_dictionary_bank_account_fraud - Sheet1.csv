@@ -1,0 +1,33 @@
+Column Name,Data Type,Description,example_vaue,unit
+fraud_bool,int,Indicates whether the transaction is fraudulent (1) or not (0),,
+income,float,Income of the customer,39,years
+name_email_similarity,float,Similarity score between the customer's name and email,1,n/a
+prev_address_months_count,int,Number of months at the previous address,156,months
+current_address_months_count,int,Number of months at the current address,0.6637035451,n/a
+customer_age,int,Age of the customer,,
+days_since_request,int,Number of days since the request,,
+intended_balcon_amount,float,Intended balance amount,,
+payment_type,string,Type of payment,,
+zip_count_4w,int,Number of zip codes used in the last 4 weeks,,
+velocity_6h,float,Transaction velocity in the last 6 hours,,
+velocity_24h,float,Transaction velocity in the last 24 hours,,
+velocity_4w,float,Transaction velocity in the last 4 weeks,,
+bank_branch_count_8w,int,Number of bank branches used in the last 8 weeks,,
+date_of_birth_distinct_emails_4w,int,Number of distinct emails used with date of birth in the last 4 weeks,,
+employment_status,string,Employment status of the customer,,
+credit_risk_score,float,Credit risk score,,
+email_is_free,int,Indicates if the email is from a free provider,,
+housing_status,string,Housing status of the customer,,
+phone_home_valid,int,Indicates if the home phone number is valid,,
+phone_mobile_valid,int,Indicates if the mobile phone number is valid,,
+bank_months_count,int,Number of months with the bank,,
+has_other_cards,int,Indicates if the customer has other cards,,
+proposed_credit_limit,float,Proposed credit limit,,
+foreign_request,int,Indicates if the request is from a foreign location,,
+source,string,Source of the request,,
+session_length_in_minutes,float,Session length in minutes,,
+device_os,string,Operating system of the device used,,
+keep_alive_session,int,Indicates if the session is kept alive,,
+device_distinct_emails_8w,int,Number of distinct emails used on the device in the last 8 weeks,,
+device_fraud_count,int,Number of fraudulent transactions on the device,,
+month,int,Month of the transaction,,

@@ -1,41 +1,81 @@
-# inst414-final-project-Ajuani-Hall
-Part 2 of the Final Project for INST 414
-Project Overview
+## Kaggle API Key Setup
 
-In the banking and finance sector, fraud detection and prevention is a critical business problem due to substantial risks of financial losses, reputational damage, and erosion of customer trust. This project aims to develop an advanced fraud detection system using machine learning techniques to accurately identify and prevent fraudulent transactions in real-time, thereby safeguarding the institution's assets and maintaining customer trust.
+To access the Kaggle dataset, you'll need your own Kaggle API key.
 
+1. **Generate a Kaggle API Key:**
+   - Log in to your Kaggle account.
+   - Navigate to the **Account** section.
+   - Scroll down to the **API** section and click **Create New API Token**. This will download a `kaggle.json` file.
 
-Business Problem:
+2. **Place the `kaggle.json` File:**
+   - For Unix-based systems (macOS, Linux): Place it in `~/.kaggle/kaggle.json`.
+   - For Windows: Place it in `%HOMEPATH%\.kaggle\kaggle.json`.
 
-Develop an advanced fraud detection system to accurately identify and prevent fraudulent transactions in real-time.
+   Ensure the file has proper permissions set (Unix-based systems):
+   ```bash
+   chmod 600 ~/.kaggle/kaggle.json
 
-Dataset : https://www.kaggle.com/datasets/sgpjesus/bank-account-fraud-dataset-neurips-2022
+# Project Overview
 
-Techniques Employed:
+This project aims to detect bank account fraud using machine learning techniques. The dataset used is the "Bank Account Fraud Dataset" from Kaggle, which includes various features related to bank transactions and user details. The goal is to build a model that can accurately classify transactions as fraudulent or non-fraudulent.
 
-Data preprocessing
-Machine learning (Logistic Regression, Decision Trees, Random Forests, Neural Networks)
-Exploratory data analysis (EDA)
-Data visualization
+## Setup Instructions
 
-Expected Outputs:
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/YOUR_GITHUB_USERNAME/inst414-final-project-ajuani-hall.git
+    cd inst414-final-project-ajuani-hall
+    ```
 
-A robust fraud detection model
-Visualizations highlighting key insights and model performance
+2. **Create and activate a virtual environment**:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On macOS/Linux
+    # or
+    .\venv\Scripts\activate  # On Windows
+    ```
 
-Prerequisites
-Python 3.x
-Git
+3. **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
+4. **Ensure Kaggle API credentials are set up**:
+    - Place the `kaggle.json` file in the `~/.kaggle` directory.
 
-Project Workflow
-The project workflow includes the following steps:
+## Running the Project
 
-ETL Pipeline:
-Extract: Retrieve data from the specified source.
-Transform: Clean and preprocess the data.
-Load: Store the processed data for analysis.
-Analysis and Evaluation:
-Build and evaluate machine learning models.
-Visualization:
-Generate visualizations to present key findings and model performance.
+1. **Run the main script**:
+    ```bash
+    python main.py
+    ```
+
+## Code Package Structure
+
+- `data/`: Data files
+    - `extracted/`: Extracted raw data files
+    - `processed/`: Cleaned and processed data files
+    - `outputs/`: Output files such as visualizations
+    - `reference-tables/`: Reference tables used in the project
+- `etl/`: ETL pipeline scripts
+    - `extract.py`: Script to extract data
+    - `transform.py`: Script to transform data
+    - `load.py`: Script to load data
+- `analysis/`: Analysis scripts
+    - `model.py`: Script to build and train the model
+    - `evaluate.py`: Script to evaluate the model
+- `vis/`: Visualization scripts
+    - `visualizations.py`: Script to create visualizations
+- `main.py`: Main script to run the project
+- `README.md`: Project documentation
+- `requirements.txt`: List of dependencies
+
+## Updates for Part 3
+- Enhanced logging and error handling in `main.py` and other modules.
+- Improved ETL processes to include new data sources and better transformations.
+- Updated model evaluation to include detailed metrics and logging.
+- Added more comprehensive docstrings and comments across all modules.
+
+- # Updates for the Final Project Presentation
+- Insured guide on where to place Kaggle API key is uploaded
+- Finalized code to ensure all parts are operational.
