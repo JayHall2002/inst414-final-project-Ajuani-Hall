@@ -1,20 +1,34 @@
-from sklearn.metrics import classification_report
-from .model import build_model
-import logging
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
-logging.basicConfig(level=logging.INFO)
+def build_model():
+    """
+    Build and train a RandomForest model on the cleaned dataset.
 
-def evaluate_model():
-    logging.info("Building and training model...")
-    model, X_test, y_test = build_model()
+    This function performs the following steps:
+    - Load the processed data.
+    - Split the data into training and testing sets.
+    - Train a RandomForest classifier on the training data.
+    - Return the trained model and the testing data.
+    """
+    # Load the processed data
+    df = pd.read_csv('data/processed/bank_account_fraud_clean.csv')
+    X = df.drop('fraud_bool', axis=1)
+    y = df['fraud_bool']
     
-    logging.info("Predicting...")
-    y_pred = model.predict(X_test)
+    # Ensure all features are numeric
+    X = pd.get_dummies(X)
     
-    logging.info("Evaluating model...")
-    report = classification_report(y_test, y_pred)
-    print(report)
-    logging.info("Evaluation complete.")
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Train the RandomForest model with optimized parameters
+    model = RandomForestClassifier(n_estimators=50, max_depth=10, n_jobs=-1, random_state=42)
+    model.fit(X_train, y_train)
+    
+    print("Model training complete.")
+    return model, X_test, y_test
 
 if __name__ == "__main__":
-    evaluate_model()
+    build_model()
